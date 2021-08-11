@@ -12,7 +12,7 @@ Part3. 目标设备上使用TensorRT 生成yolov4的 .engine 文件(Jetson Nano 
 
 Part4. 使用Deepstream 运行yolov4的 .engine 文件.
 
-Note: 如果想先对YOLOV4网络进行剪枝， 可以参考 https://github.com/chumingqian/Model_Compression_For_YOLOV4.
+Note: 如果想先对YOLOV4网络进行剪枝， 可以参考[channel pruning for yolov4](https://github.com/chumingqian/Model_Compression_For_YOLOV4).
 
 
 ## part1. 在主机端host machine上,使用Pytorch生成yolov4的ONNX模型: ##
