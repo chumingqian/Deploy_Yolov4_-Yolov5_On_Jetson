@@ -4,15 +4,15 @@
 
 **本仓库主要介绍将yolov4部署到Jetson Nano 上，并使用Deepstrem 和 TensorRT 加速网络的推理，主体内容如下**
 
-part1. 在主机端host machine上,使用Pytorch生成yolov4的ONNX模型.  
+Part1. 在主机端host machine上,使用Pytorch生成yolov4的ONNX模型.  
 
-part2. 目标设备上(此处是边缘端设备 Jetson Nano), 安装Deepstream. 
+Part2. 目标设备上(此处是边缘端设备 Jetson Nano), 安装Deepstream. 
 
-part3. 目标设备上使用TensorRT 生成yolov4的 .engine 文件(Jetson Nano 自带cuda 10.2, TensorRT 7.1.3).
+Part3. 目标设备上使用TensorRT 生成yolov4的 .engine 文件(Jetson Nano 自带cuda 10.2, TensorRT 7.1.3).
 
-part4. 使用Deepstream 运行yolov4的 .engine 文件.
+Part4. 使用Deepstream 运行yolov4的 .engine 文件.
 
-
+Note: 如果想先对YOLOV4网络进行剪枝， 可以参考 https://github.com/chumingqian/Model_Compression_For_YOLOV4.
 
 
 ## part1. 在主机端host machine上,使用Pytorch生成yolov4的ONNX模型: ##
@@ -151,10 +151,19 @@ part4. 使用Deepstream 运行yolov4的 .engine 文件.
                deepstream-app -c source1_csi_dec_infer_yolov4.txt
 -------
 
+4.7 对比原始的YOLOV4 和各个剪枝后网络的推理一张图片的速度：
 
 
+|<center> Model Size </center> |<center>  inference speed</center> |
+| --- | --- |
+|BaseModel  256M    |414 ms    |
+|  98 M             |311 ms   |
+|90 M               |305 ms    |
+|84 M               |303 ms    |
+|77 M               |291 ms    |
+|68M                |274 ms    |
 
-
+Note: 以上模型的体积大小是剪枝后的体积大小， 并非是实际经过量化后体积大小， 实际量化后的大小，在开发板上可查看。
 
 ###  本仓库包含 YOLOV4网络使用 TensorRT 的两种方式 ###
 
