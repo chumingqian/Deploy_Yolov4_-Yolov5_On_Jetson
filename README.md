@@ -1,6 +1,6 @@
 #  This reporsity  introdce the Deployment on edge device, Jetson
 #  I : Deploy yolov4 on Jetson Nano; 
-#  II: Deploy yolov5 on Jetson TX2;
+#  II: Deploy yolov5_version6.0 on Jetson TX2;
 
 
 
@@ -210,13 +210,18 @@ dpkg -l | grep opencv
 
 
 
+
+
+
 ##  2. 项目文件准备
 
 2.1 下载yolov5 项目到 边缘设备端
-git clone -b v4.0 https://github.com/ultralytics/yolov5.git
+git clone -b v6.0 https://github.com/ultralytics/yolov5.git
+
 cd yolov5
 
 2.2  下载 DeepstreamYolov
+
 https://github.com/marcoslucianops/DeepStream-Yolo 
 
 2.3  下载yolov5s.pt 文件；  此处以yolov5s 文件  对应为权重为例子；
