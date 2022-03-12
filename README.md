@@ -182,6 +182,10 @@ Note: 以上模型的体积大小是剪枝后的体积大小， 并非是实际�
 
 
 
+
+
+## II : Deploy Yolov5 on Jetson TX2;
+
 ------------------------    II : Deploy Yolov5 on Jetson TX2 ;  ----------------------
 
 
@@ -197,7 +201,9 @@ The next version of NVIDIA DeepStream SDK 6.0 will support JetPack 4.6;
 检查 1. cuda  对应版本是否 安装， 2. 安装 Tensor RT; 3.  安装opencv；
 
 dpkg -l | grep cuda
-dpkg -l | grep nvinfer  
+
+dpkg -l | grep nvinfer 
+
 dpkg -l | grep opencv
 
 
@@ -244,7 +250,9 @@ CUDA_VER=10.2 make -C nvdsinfer_custom_impl_Yolo；
 
 
 ##  6.  修改配置文件；
-6.1  打开  config_infer_primary_yoloV5.txt ，  修改 对应的 cfg ，  .wts 文件
+6.1  打开  config_infer_primary_yoloV5.txt ，  修改对应的 cfg ，  .wts 文件
+
+```bash
 [property]
 ...
 # 0=RGB, 1=BGR, 2=GRAYSCALE
@@ -269,10 +277,11 @@ num-detected-classes=80
 nms-iou-threshold=0.6
 # Socre threshold
 pre-cluster-threshold=0.25
-
+```
 
 
 6.2  修改 deepstream_app_config.txt；
+```bash 
 ...
 [primary-gie]
 enable=1
@@ -280,7 +289,7 @@ gpu-id=0
 gie-unique-id=1
 nvbuf-memory-type=0
 config-file=config_infer_primary_yoloV5.txt
-
+```
 
 
 ## 7. run  运行 
@@ -294,6 +303,7 @@ deepstream-app -c deepstream_app_config.txt；
 ##  8. 运行 摄像头文件；
 
  将 deepstream_app_config.txt 中的  [source0] 改成如下部分；
+ ```bash
 
 [source0]
 enable=1
@@ -303,7 +313,7 @@ camera-height=480
 camera-fps-n=30
 camera-fps-d=1
 camera-v4l2-dev-node=0
-
+```
 
 
 
