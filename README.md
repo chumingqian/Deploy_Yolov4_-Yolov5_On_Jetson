@@ -192,11 +192,13 @@ Note: 以上模型的体积大小是剪枝后的体积大小， 并非是实际�
 ##  1. 步骤一 环境准备
 https://developer.nvidia.com/jetpack-sdk-46
 
-Jetpack4.6  环境:  ubuntu 18.04; 
+Jetpack4.6  环境:  ubuntu 18.04;
+
 TensorRT 8.0.1;   重要！！ 用于生成 .engine 文件；
+
 includes CUDA 10.2;  includes cuDNN 8.2.1;
 
-The next version of NVIDIA DeepStream SDK 6.0 will support JetPack 4.6;
+ NVIDIA DeepStream SDK 6.0  support JetPack 4.6;
 
 检查 1. cuda  对应版本是否 安装， 2. 安装 Tensor RT; 3.  安装opencv；
 
